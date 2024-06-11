@@ -26,7 +26,8 @@ jobs:
         id: setup
 
       - name: Install pre-reqs
-        run: apt-get install libnbd-bin nbdkit fuse2fs -y
+        run: sudo apt-get install libnbd-bin nbdkit fuse2fs -y
+
       - name: Make
         run: packer init rocky9.pkr.hcl
 

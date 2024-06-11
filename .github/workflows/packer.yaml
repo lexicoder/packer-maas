@@ -25,6 +25,9 @@ jobs:
         uses: hashicorp/setup-packer@main
         id: setup
 
+      - name: Make
+        run: packer init rocky9.pkr.hcl
+
       - uses: hashicorp/packer-github-actions@master
         with:
           command: fmt

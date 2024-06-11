@@ -18,3 +18,7 @@ jobs:
           command: fmt
           arguments: -check -diff
           target: .
+      - name: List files in the repository
+        run: |
+          cd rocky9
+          make

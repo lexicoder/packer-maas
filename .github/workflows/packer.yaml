@@ -13,21 +13,23 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./rocky9
+        working-directory: rocky9
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+
       - uses: hashicorp/packer-github-actions@master
         with:
           command: fmt
           arguments: -check -diff
           target: .
-      - uses: hashicorp/packer-github-actions@master
-        with:
-          command: init
-          target: ./rocky9/rocky9.pkr.hcl
-      - uses: hashicorp/packer-github-actions@master
-        with:
-          command: build
-          arguments: -var timeout=1h
-          target: ./rocky9/rocky9.pkr.hcl
+
+      - name: Make
+        run: make

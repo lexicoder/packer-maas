@@ -17,9 +17,14 @@ jobs:
         with:
           command: fmt
           arguments: -check -diff
-          target: .
-      - name: List files in the repository
-        run: |
-          cd rocky9
-          make
-          find .
+          target: ./rocky9
+      - uses: hashicorp/packer-github-actions@master
+        with:
+          command: init
+          arguments: rocky9.pkr.hcl && ${PACKER} build -var timeout=${TIMEOUT} rocky9.pkr.hcl
+          target: ./rocky9
+      - uses: hashicorp/packer-github-actions@master
+        with:
+          command: build
+          arguments: -var timeout=${TIMEOUT} rocky9.pkr.hcl
+          target: ./rocky9

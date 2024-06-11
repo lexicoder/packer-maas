@@ -25,8 +25,9 @@ jobs:
       - uses: hashicorp/packer-github-actions@master
         with:
           command: init
-          arguments: rocky9.pkr.hcl
+          target: rocky9.pkr.hcl
       - uses: hashicorp/packer-github-actions@master
         with:
           command: build
-          arguments: -var timeout=1h rocky9.pkr.hcl
+          arguments: -var timeout=1h
+          target: rocky9.pkr.hcl

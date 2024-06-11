@@ -90,7 +90,7 @@ source "qemu" "rocky9" {
   qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
   shutdown_timeout = var.timeout
   http_content = {
-    "/rocky.ks" = templatefile("${path.root}/http/rocky.ks.pkrtpl.hcl",
+    "/rocky.ks" = templatefile("http/rocky.ks.pkrtpl.hcl",
       {
         KS_PROXY           = local.ks_proxy,
         KS_OS_REPOS        = local.ks_os_repos,

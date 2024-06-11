@@ -10,6 +10,10 @@ on:
 
 jobs:
   packer:
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./rocky9
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,14 +21,12 @@ jobs:
         with:
           command: fmt
           arguments: -check -diff
-          target: ./rocky9
+          target: .
       - uses: hashicorp/packer-github-actions@master
         with:
           command: init
           arguments: rocky9.pkr.hcl
-          target: ./rocky9
       - uses: hashicorp/packer-github-actions@master
         with:
           command: build
-          arguments: -var timeout=${TIMEOUT} rocky9.pkr.hcl
-          target: ./rocky9
+          arguments: -var timeout=1h rocky9.pkr.hcl

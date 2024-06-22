@@ -87,7 +87,7 @@ source "qemu" "rocky9" {
   iso_checksum     = "file:${var.rocky_sha256sum_url}"
   iso_url          = "${var.rocky_iso_url}"
   memory           = 2048
-  qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
+  qemuargs         = [["-serial", "stdio"]]
   shutdown_timeout = var.timeout
   accelerator      = "none"
   http_content = {

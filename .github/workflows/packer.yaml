@@ -38,3 +38,5 @@ jobs:
 
       - name: Make
         run: make
+        env:
+          PACKER_LOG: 1

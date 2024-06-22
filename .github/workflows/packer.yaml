@@ -23,8 +23,7 @@ jobs:
 
       - name: Find qemu
         run: |
-          cd /
-          sudo find | grep 'qemu'
+          ls -lh /snap/lxd/28373/bin/
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main

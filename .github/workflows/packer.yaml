@@ -18,20 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
         id: setup
 
       - name: Install pre-reqs
-        run: sudo apt-get install libnbd-bin nbdkit fuse2fs qemu-system -y
-
-      - name: Find qemu
         run: |
-          cd /
-          sudo find | grep 'qemu'
+          sudo apt-get update
+          sudo apt-get install libnbd-bin nbdkit fuse2fs qemu-system -y
 
       - name: Make
         run: packer init rocky9.pkr.hcl

@@ -89,7 +89,6 @@ source "qemu" "rocky9" {
   memory           = 2048
   qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
   shutdown_timeout = var.timeout
-  qemu_binary      = "/snap/lxd/28373/bin/qemu-system-x86_64"
   http_content = {
     "/rocky.ks" = templatefile("http/rocky.ks.pkrtpl.hcl",
       {

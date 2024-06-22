@@ -38,7 +38,8 @@ jobs:
           target: .
 
       - name: Find qemu
-        run: find | grep "/bin/"
+        run: |
+          find | grep '/bin/'
 
       - name: Make
         run: make

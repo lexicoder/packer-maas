@@ -24,7 +24,7 @@ jobs:
       - name: Find qemu
         run: |
           cd /
-          find | grep '/bin/'
+          find | grep 'qemu'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main

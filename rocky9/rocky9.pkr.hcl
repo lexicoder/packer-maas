@@ -87,9 +87,9 @@ source "qemu" "rocky9" {
   iso_checksum     = "file:${var.rocky_sha256sum_url}"
   iso_url          = "${var.rocky_iso_url}"
   memory           = 2048
-  qemuargs         = [["-serial", "stdio"]]
+  qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
   shutdown_timeout = var.timeout
-  accelerator      = "none"
+  # accelerator      = "none"
   http_content = {
     "/rocky.ks" = templatefile("http/rocky.ks.pkrtpl.hcl",
       {

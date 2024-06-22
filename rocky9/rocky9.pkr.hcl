@@ -89,6 +89,7 @@ source "qemu" "rocky9" {
   memory           = 2048
   qemuargs         = [["-serial", "stdio"], ["-cpu", "host"]]
   shutdown_timeout = var.timeout
+  accelerator      = "none"
   http_content = {
     "/rocky.ks" = templatefile("http/rocky.ks.pkrtpl.hcl",
       {
